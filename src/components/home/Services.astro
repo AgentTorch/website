@@ -1,0 +1,50 @@
+---
+const services = [
+  {
+    step: '01',
+    name: 'Vision',
+    link: '/assets/content/vision.pdf',
+    description:
+      "Explore MIT's vision for Large Population Models, leveraging AI for a real-time understanding of human behavior. This innovative approach aims to transform decision-making and ensure every voice is heard, shaping a more inclusive future.",
+  },
+  {
+    step: '02',
+    name: 'Research',
+    link: '/assets/content/research.pdf',
+    description:
+      'This research advances agent-based models (ABMs) to address societal challenges by scaling ABMs for rapid policy analysis with GradABM and utilizing secret sharing for privacy-preserving simulations through DecABM',
+  },
+  {
+    step: '03',
+    name: 'Platform',
+    link: 'https://github.com/AgentTorch/AgentTorch',
+    description:
+      "Explore MIT's GitHub repository for Large Population Models to access innovative research and tools. Collaborate with us to enhance our understanding of population dynamics and make a meaningful impact!",
+  },
+];
+---
+
+<section class="py-16 sm:py-20">
+  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="flex flex-col gap-12 sm:gap-16">
+      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Explore</h2>
+      <div class="grid gap-8 lg:grid-cols-3">
+        {
+          services.map((service) => (
+            <div class="flex flex-col gap-12 rounded-3xl bg-primary-500/10 px-6 py-8 dark:bg-primary-400/10">
+              <a target="_blank" data-astro-reload href={service.link}>
+                <p class="text-sm">{service.step}</p>
+                <div class="flex flex-col gap-4">
+                  <h3 class="text-xl font-medium">{service.name}</h3>
+                  <p class="text-base text-primary-950/70 dark:text-primary-200/70 sm:text-lg">
+                    {service.description}
+                  </p>
+                </div>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

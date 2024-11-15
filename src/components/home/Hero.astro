@@ -1,0 +1,89 @@
+<section class="py-16 sm:py-20">
+  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="flex flex-col gap-16">
+      <div class="flex flex-col items-start gap-8 sm:gap-10">
+        <div class="flex max-w-xl flex-col items-start gap-4 sm:gap-6">
+          <h1
+            class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl"
+          >
+            HOW DO YOU SEE THE WORLD?
+          </h1>
+          <p
+            class="text-primary-950/70 dark:text-primary-200/70 text-lg sm:text-xl"
+          >
+            <span id="dynamic-text">Our World is Complex</span><span
+              class="text-[#0C0A09] dark:text-[#E7E5E4] cursor">|</span
+            >
+          </p>
+        </div>
+        <a target="_blank" href="https://web.media.mit.edu/~ayushc/neo.mp4">
+          <button
+            class="bg-primary-600 dark:bg-primary-400 hover:bg-primary-700 dark:hover:bg-primary-300 focus-visible:outline-primary-600 dark:focus-visible:outline-primary-400 dark:text-primary-950 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+          >
+            SEE LPM’S IN ACTION!
+          </button>
+        </a>
+      </div>
+      <!-- Image and Video Container -->
+      <div id="media-container" class="relative">
+        <img
+          id="hero-image"
+          class="h-auto w-full rounded-3xl"
+          width="1280"
+          height="640"
+          src="/assets/hero.png"
+          alt="Hero picture"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cursor {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.8rem;
+    animation: blink 1s step-start infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  const dynamicText = document.getElementById("dynamic-text");
+  const messages = ["Our World is Complex", "We make it comprehensible"];
+  let currentMessageIndex = 0;
+  let currentCharIndex = 0;
+  let deleting = false;
+
+  function typeEffect() {
+    const currentMessage = messages[currentMessageIndex];
+
+    if (deleting) {
+      dynamicText.textContent = currentMessage.slice(0, currentCharIndex--);
+      if (currentCharIndex < 0) {
+        deleting = false;
+        currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+        setTimeout(typeEffect, 1000);
+        return;
+      }
+    } else {
+      dynamicText.textContent = currentMessage.slice(0, currentCharIndex++);
+      if (currentCharIndex > currentMessage.length) {
+        deleting = true;
+        setTimeout(typeEffect, 2000);
+        return;
+      }
+    }
+
+    const typingSpeed = deleting ? 100 : 150;
+    setTimeout(typeEffect, typingSpeed);
+  }
+
+  document.addEventListener("DOMContentLoaded", typeEffect);
+</script>
